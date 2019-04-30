@@ -1,0 +1,642 @@
+[
+  {
+    "type": "post",
+    "url": "/api/v1/cart/:userId/add",
+    "title": "Add new Product to cart",
+    "version": "0.0.1",
+    "group": "Create",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>ID of user passed as a URL parameter(Required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>ID of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "quantity",
+            "description": "<p>Quantity of product passed as a body parameter</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n       \"error\": false,\n       \"message\": \"Product added to cart successfully\",\n       \"status\": 200,\n       \"data\": [\n           {\n             \"userId\": \"String\",\n             \"productId\": \"String\",\n             \"quantity\": Number,\n             \"created\": \"Date\",\n             \"lastModified\": \"Date\"\n           }\n       ]\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n  \t    \"error\": true,\n  \t    \"message\": \"Error Occured.\",\n  \t    \"status\": 500,\n  \t    \"data\": null\n         }\n         {\n  \t    \"error\": true,\n  \t    \"message\": \"required parameters are missing\",\n  \t    \"status\": 403,\n  \t    \"data\": null\n  \t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/cart.js",
+    "groupTitle": "Create",
+    "name": "PostApiV1CartUseridAdd"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/products/create",
+    "title": "Create/Add new Product details",
+    "version": "0.0.1",
+    "group": "Create",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>ID of product passed as a URL parameter(Required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "description",
+            "description": "<p>Description of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>Price of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "brand",
+            "description": "<p>Brand of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "cashOnDelivery",
+            "description": "<p>Cash On Delivery option for product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "category",
+            "description": "<p>Category of product passed as a body parameter</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n       \"error\": false,\n       \"message\": \"Product Details created/added successfully\",\n       \"status\": 200,\n       \"data\": [\n           {\n               \"productId\": \"String\",\n               \"title\": \"String\",\n               \"description\": \"String\",\n               \"price\":  Number,\n               \"brand\": \"String\",\n               \"cashOnDelivery\": false,\n               \"category\":  \"String\"\n           }\n       ]\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"Failed to create product\",\n    \"status\": 500,\n    \"data\": null\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/product.js",
+    "groupTitle": "Create",
+    "name": "PostApiV1ProductsCreate"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/cart/:userId/:productId/delete",
+    "title": "Delete product from user's cart",
+    "version": "0.0.1",
+    "group": "Delete",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>product Id passed as a URL parameter(Required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>user Id passed as a URL parameter(Required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n           \"error\": false,\n           \"message\": \"Product Deleted Successfully\",\n           \"status\": 200,\n           \"data\": {\n               \"n\": 1,\n               \"ok\": 1\n           }\n       }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n       }\n       {\n\t    \"error\": true,\n\t    \"message\": \"Product not found\",\n\t    \"status\": 404,\n\t    \"data\": null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/cart.js",
+    "groupTitle": "Delete",
+    "name": "PostApiV1CartUseridProductidDelete"
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/products/:productId/delete",
+    "title": "Delete Product Details",
+    "version": "0.0.1",
+    "group": "Delete",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>ID of product passed as a URL parameter(Required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"Product Deleted\",\n    \"status\": 200,\n    \"data\": {\n        \"n\": 1,\n        \"ok\": 1\n        }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n \"error\": true,\n \"message\": \"Error Occured\",\n \"status\": 500,\n \"data\": null\n }\n {\n \"error\": true,\n \"message\": \"No Product Found\",\n \"status\": 404,\n \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/product.js",
+    "groupTitle": "Delete",
+    "name": "PostApiV1ProductsProductidDelete"
+  },
+  {
+    "type": "put",
+    "url": "/api/v1/cart/:userId/:productId/edit",
+    "title": "Edit the quantity of product from user's cart",
+    "version": "0.0.1",
+    "group": "Edit",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>Product Id passed as a URL parameter(Required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>User Id passed as a URL parameter(Required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "quantity",
+            "description": "<p>Quantity of product passed as a body parameter(Required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n           \"error\": false,\n           \"message\": \"Product Edited Successfully.\",\n           \"status\": 200,\n           \"data\": {\n               \"n\": 1,\n               \"nModified\": 1,\n               \"ok\": 1\n           }\n       }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n       }\n       {\n\t    \"error\": true,\n\t    \"message\": \"Product not found\",\n\t    \"status\": 404,\n\t    \"data\": null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/cart.js",
+    "groupTitle": "Edit",
+    "name": "PutApiV1CartUseridProductidEdit"
+  },
+  {
+    "type": "put",
+    "url": "/api/v1/products/:productId/edit",
+    "title": "Edit Product Details",
+    "version": "0.0.1",
+    "group": "Edit",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>ID of product passed as a URL parameter(Required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "description",
+            "description": "<p>Description of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>Price of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "brand",
+            "description": "<p>Brand of product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "cashOnDelivery",
+            "description": "<p>Cash On Delivery option for product passed as a body parameter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "category",
+            "description": "<p>Category of product passed as a body parameter</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n       \"error\": false,\n       \"message\": \"Product Details edited/updated successfully\",\n       \"status\": 200,\n       \"data\": {\n           \"n\": 1,\n           \"nModified\": 1,\n           \"ok\": 1\n       }\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"Failed to edit product\",\n    \"status\": 500,\n    \"data\": null\n    }\n    {\n    \"error\": true,\n    \"message\": \"No Product Found\",\n    \"status\": 404,\n    \"data\": null\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/product.js",
+    "groupTitle": "Edit",
+    "name": "PutApiV1ProductsProductidEdit"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/cart/:userId/viewcart",
+    "title": "View the all items of user's cart",
+    "version": "0.0.1",
+    "group": "Read",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>user Id passed as a URL parameter(Required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n           \"error\": false,\n           \"message\": \"Displaying Cart items\",\n           \"status\": 200,\n           \"data\": [\n               {\n                   \"userId\": \"String\",\n                   \"productId\": \"String\",\n                   \"quantity\": Number,\n                   \"created\": \"Date\",\n                   \"lastModified\": \"Date\"\n               }\n           ]\n       }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n       }\n       {\n\t    \"error\": true,\n\t    \"message\": \"Cart items not found\",\n\t    \"status\": 404,\n\t    \"data\": null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/cart.js",
+    "groupTitle": "Read",
+    "name": "GetApiV1CartUseridViewcart"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/products/all",
+    "title": "Get All Products",
+    "version": "0.0.1",
+    "group": "Read",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\n{\n  \"error\": false,\n  \"message\": \"All Products Found\",\n  \"status\": 200,\n  \"data\": [\n      {\n        \"productId\": \"String\",\n        \"title\": \"String\",\n        \"description\": \"String\",\n        \"price\":  Number,\n        \"brand\": \"String\",\n        \"cashOnDelivery\": false,\n        \"category\":  \"String\"\n      }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n\"error\": true,\n\"message\": \"Failed to find product details\",\n\"status\": 500,\n\"data\": null\n}\n{\n\"error\": true,\n\"message\": \"No Product Found\",\n\"status\": 404,\n\"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/product.js",
+    "groupTitle": "Read",
+    "name": "GetApiV1ProductsAll"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/products/view/by/brand/:brand",
+    "title": "Get Products by brand",
+    "version": "0.0.1",
+    "group": "Read",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "brand",
+            "description": "<p>name of product passed as a URL parameter(Required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n       \"error\": false,\n       \"message\": \"Products found\",\n       \"status\": 200,\n       \"data\": [\n           {\n             \"productId\": \"String\",\n             \"title\": \"String\",\n             \"description\": \"String\",\n             \"price\":  Number,\n             \"brand\": \"String\",\n             \"cashOnDelivery\": false,\n             \"category\":  \"String\"\n           }\n       ]\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"Error Occured\",\n    \"status\": 500,\n    \"data\": null\n    }\n    {\n    \"error\": true,\n    \"message\": \"No Product Found of given brand\",\n    \"status\": 404,\n    \"data\": null\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/product.js",
+    "groupTitle": "Read",
+    "name": "GetApiV1ProductsViewByBrandBrand"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/products/view/by/category/:category",
+    "title": "Get Products by category",
+    "version": "0.0.1",
+    "group": "Read",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "category",
+            "description": "<p>of product passed as a URL parameter(Required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n       \"error\": false,\n       \"message\": \"Products found\",\n       \"status\": 200,\n       \"data\": [\n           {\n             \"productId\": \"String\",\n             \"title\": \"String\",\n             \"description\": \"String\",\n             \"price\":  Number,\n             \"brand\": \"String\",\n             \"cashOnDelivery\": false,\n             \"category\":  \"String\"\n           }\n       ]\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"Error Occured\",\n    \"status\": 500,\n    \"data\": null\n    }\n    {\n    \"error\": true,\n    \"message\": \"No Product Found in given category\",\n    \"status\": 404,\n    \"data\": null\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/product.js",
+    "groupTitle": "Read",
+    "name": "GetApiV1ProductsViewByCategoryCategory"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/products/view/:productId",
+    "title": "Get Product Details by productId",
+    "version": "0.0.1",
+    "group": "Read",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>ID of product passed as a URL parameter(Required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n       \"error\": false,\n       \"message\": \"Product found\",\n       \"status\": 200,\n       \"data\": [\n           {\n             \"productId\": \"String\",\n             \"title\": \"String\",\n             \"description\": \"String\",\n             \"price\":  Number,\n             \"brand\": \"String\",\n             \"cashOnDelivery\": false,\n             \"category\":  \"String\"\n           }\n       ]\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"Error Occured\",\n    \"status\": 500,\n    \"data\": null\n    }\n    {\n    \"error\": true,\n    \"message\": \"No Product Found with given ID\",\n    \"status\": 404,\n    \"data\": null\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/product.js",
+    "groupTitle": "Read",
+    "name": "GetApiV1ProductsViewProductid"
+  }
+]
